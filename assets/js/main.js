@@ -148,6 +148,7 @@
   $(function () {
     $(".msg").hide();
     $("#contact-form").on("submit", function (e) {
+      $(".msg").show();
 
       // Cancelamos el evento si se requiere 
       e.preventDefault();
@@ -159,7 +160,7 @@
 
       // Enviamos los datos al archivo PHP que procesará el envio de los datos a un determinado correo 
       $.ajax({
-        url: "assets\contact\sendmail.php",
+        url: "assets/contact/sendmail.php",
         type: "post",
         dataType: "json",
         data: formData,
@@ -167,8 +168,8 @@
         contentType: false,
         processData: false,
         beforeSend: function () {
-          $("#mail-btn").remove();
           $('.msg').html('<div class="loader"></div>');
+          $("#mail-btn").remove();
         },
       })
 
@@ -180,7 +181,6 @@
           if (res.a == "1") {
 
             // Mostramos el mensaje 'Tu Mensaje ha sido enviado Correctamente !' 
-            $(".msg").show();
             $(".msg").html("<h3>¡Muchas gracias!</h3>"
               + "<p>Tu mensaje ha sido enviado correctamente. Recibirá una respuesta lo antes posible.</p>"
             );
@@ -188,7 +188,6 @@
             $("#mail-btn").remove();
 
           } else {
-            $(".msg").show();
             $(".msg").html("<h3>¡Muchas gracias!</h3>"
               + "<p>Tu mensaje ha sido enviado correctamente. Recibirá una respuesta lo antes posible.</p>"
             );
@@ -199,7 +198,6 @@
 
         // Mensaje de error al enviar el formulario 
         .fail(function (res) {
-          $(".msg").show();
           $(".msg").html('<h3>Disculpe las molestias</h3>'
             + '<p>Se ha superado el número de correos que se pueden mandar a través de este formulario al día.</p>'
             + '<p>Por favor, envíe el correo haciendo click <a href="mailto: monicacalderon.gm@gmail.com?Subject=CONTACTO%20WEB%20-%20">aquí</a></p>');
