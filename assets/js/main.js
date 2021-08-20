@@ -1,5 +1,5 @@
 
-(function() {
+(function () {
   "use strict";
 
   /**
@@ -86,7 +86,7 @@
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
+  on('click', '.mobile-nav-toggle', function (e) {
     select('body').classList.toggle('mobile-nav-active')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
@@ -95,7 +95,7 @@
   /**
    * Scrool with ofset on links with a class name .scrollto
    */
-  on('click', '.scrollto', function(e) {
+  on('click', '.scrollto', function (e) {
     if (select(this.hash)) {
       e.preventDefault()
 
@@ -142,102 +142,102 @@
       mirror: false
     })
 
-  }); 
+  });
 
   /* Form */
-  $(function(){
+  $(function () {
     $(".msg").hide();
-    $("#contact-form").on("submit", function(e){  
-              
-        // Cancelamos el evento si se requiere 
-        e.preventDefault();
- 
-        // Obtenemos los datos del formulario 
-        var f = $(this);
-        var formData = new FormData(document.getElementById("contact-form"));
-        formData.append("dato", "valor");
-               
-        // Enviamos los datos al archivo PHP que procesará el envio de los datos a un determinado correo 
-        $.ajax({
-            url: "assets\contact\sendmail.php",
-            type: "post",
-            dataType: "json",
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            beforeSend: function() {
-              $("#mail-btn").remove();
-              $('.msg').html('<div class="loader"></div>');
-            },
-        })
- 
+    $("#contact-form").on("submit", function (e) {
+
+      // Cancelamos el evento si se requiere 
+      e.preventDefault();
+
+      // Obtenemos los datos del formulario 
+      var f = $(this);
+      var formData = new FormData(document.getElementById("contact-form"));
+      formData.append("dato", "valor");
+
+      // Enviamos los datos al archivo PHP que procesará el envio de los datos a un determinado correo 
+      $.ajax({
+        url: "assets\contact\sendmail.php",
+        type: "post",
+        dataType: "json",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        beforeSend: function () {
+          $("#mail-btn").remove();
+          $('.msg').html('<div class="loader"></div>');
+        },
+      })
+
         // Cuando el formulario es enviado, mostramos un mensaje en la vista HTML 
         // En el archivo enviarcorreo.php devuelvo el valor '1' el cual es procesado con jQuery Ajax 
         // y significa que el mensaje se envio satisfactoriamente. 
-        .done(function (res) {                  
- 
-          if(res.a == "1"){
-                    
+        .done(function (res) {
+
+          if (res.a == "1") {
+
             // Mostramos el mensaje 'Tu Mensaje ha sido enviado Correctamente !' 
             $(".msg").show();
             $(".msg").html("<h3>¡Muchas gracias!</h3>"
-            + "<p>Tu mensaje ha sido enviado correctamente. Recibirá una respuesta lo antes posible.</p>"
-            );                   
+              + "<p>Tu mensaje ha sido enviado correctamente. Recibirá una respuesta lo antes posible.</p>"
+            );
             $("#contact-form").trigger("reset");
-            $("#mail-btn").remove();    
- 
-          }  else {
-            $(".msg").show();       
+            $("#mail-btn").remove();
+
+          } else {
+            $(".msg").show();
             $(".msg").html("<h3>¡Muchas gracias!</h3>"
-            + "<p>Tu mensaje ha sido enviado correctamente. Recibirá una respuesta lo antes posible.</p>"
-            ); 
+              + "<p>Tu mensaje ha sido enviado correctamente. Recibirá una respuesta lo antes posible.</p>"
+            );
             $("#mail-btn").remove();
           }
-                                                      
+
         })
- 
+
         // Mensaje de error al enviar el formulario 
         .fail(function (res) {
-            $(".msg").show();            
-            $(".msg").html('<h3>Disculpe las molestias</h3>'
+          $(".msg").show();
+          $(".msg").html('<h3>Disculpe las molestias</h3>'
             + '<p>Se ha superado el número de correos que se pueden mandar a través de este formulario al día.</p>'
             + '<p>Por favor, envíe el correo haciendo click <a href="mailto: monicacalderon.gm@gmail.com?Subject=CONTACTO%20WEB%20-%20">aquí</a></p>');
-            $("#mail-btn").remove();
+          $("#mail-btn").remove();
         });
- 
-    });
-});
 
-  
+    });
+  });
+
+
 
   /* Form response */
-/*   let mail_btn = select('#mail-btn');
-  mail_btn.addEventListener('click', () => {
+  /*   let mail_btn = select('#mail-btn');
+    mail_btn.addEventListener('click', () => {
+  
+        var mensajeModal = '<div class="modal_wrap">'+
+                              '<div class="msg_modal">'+
+                                '<h3>¡Muchas gracias!</h3>'+
+                                '<p>Prueba</p>'+
+                                '<p>Prueba 2</p>'+
+                                '<span id="close-btn">Cerrar</span>'+
+                              '</div>'+
+                            '</div>'
+        
+         mail_btn.innerHTML = mensajeModal;
+  
+    }) */
 
-      var mensajeModal = '<div class="modal_wrap">'+
-                            '<div class="msg_modal">'+
-                              '<h3>¡Muchas gracias!</h3>'+
-                              '<p>Prueba</p>'+
-                              '<p>Prueba 2</p>'+
-                              '<span id="close-btn">Cerrar</span>'+
-                            '</div>'+
-                          '</div>'
+  /*   let modal_wrap = select('.modal_wrap');
+    window.addEventListener('load', () => {
+      modal_wrap.remove()
+    }); */
+
+  /*   let mail_btn = select('#mail-btn');
+    mail_btn.addEventListener('click', () => {
       
-       mail_btn.innerHTML = mensajeModal;
-
-  }) */
-
-/*   let modal_wrap = select('.modal_wrap');
-  window.addEventListener('load', () => {
-    modal_wrap.remove()
-  }); */
-
-/*   let mail_btn = select('#mail-btn');
-  mail_btn.addEventListener('click', () => {
-    
-
-    modal_wrap.innerHTML = mensajeModal;
-  }) */
+  
+      modal_wrap.innerHTML = mensajeModal;
+    }) */
 
 })()
