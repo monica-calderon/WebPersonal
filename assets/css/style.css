@@ -519,7 +519,7 @@ font-family: "Ubuntu", sans-serif;
   font-weight: 700;
   margin-top: 20px;
   margin-bottom: 20px;
-  color: #45505b;
+  color: hsl(210, 14%, 31%);
 }
 
 .experience p{
@@ -735,6 +735,8 @@ font-family: "Ubuntu", sans-serif;
 .contact .info {
   width: 100%;
   background: #fff;
+  
+  padding-bottom: 30px;
 }
 
 .contact .info i {
@@ -777,6 +779,17 @@ font-family: "Ubuntu", sans-serif;
 
 .contact .form-group {
   padding-bottom: 8px;
+}
+
+.contact .send-mail-txt{
+  padding-top: 10px;
+  margin-top: -50px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+  color: #3a434c;
+
+  font-family: "Raleway", sans-serif;
 }
 
 .contact input, .contact textarea {

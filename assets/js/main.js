@@ -208,34 +208,4 @@
   });
 
 
-
-  /* Form response */
-  /*   let mail_btn = select('#mail-btn');
-    mail_btn.addEventListener('click', () => {
-  
-        var mensajeModal = '<div class="modal_wrap">'+
-                              '<div class="msg_modal">'+
-                                '<h3>¡Muchas gracias!</h3>'+
-                                '<p>Prueba</p>'+
-                                '<p>Prueba 2</p>'+
-                                '<span id="close-btn">Cerrar</span>'+
-                              '</div>'+
-                            '</div>'
-        
-         mail_btn.innerHTML = mensajeModal;
-  
-    }) */
-
-  /*   let modal_wrap = select('.modal_wrap');
-    window.addEventListener('load', () => {
-      modal_wrap.remove()
-    }); */
-
-  /*   let mail_btn = select('#mail-btn');
-    mail_btn.addEventListener('click', () => {
-      
-  
-      modal_wrap.innerHTML = mensajeModal;
-    }) */
-
 })()

@@ -72,7 +72,7 @@ if(trim($name) == '') {
  
 /* Configuración para el envio del Correo */
  
-//Correo a donde caeran los mensajes del formulario
+//Correo donde se recibirán los mensajes del formulario
 $correo = "monicacalderon.gm@gmail.com"; //
  
  
@@ -80,12 +80,12 @@ $correo = "monicacalderon.gm@gmail.com"; //
 $e_subject= "WEB PERSONAL - " . $_POST['subject'];
  
 // Preparamos el encabezado del correo 
-$e_bodya = "Nombres y Apellidos: $name" . PHP_EOL . PHP_EOL;
+$e_bodya = "Nombre y Apellidos: $name" . PHP_EOL . PHP_EOL;
 $e_bodyb = "Asunto: $subject" . PHP_EOL . PHP_EOL;
 $e_reply = "Email: $email" . PHP_EOL . PHP_EOL;
 $e_bodyc = "Mensaje: $msg" . PHP_EOL . PHP_EOL;
  
-$msg = wordwrap( $e_bodya . $e_bodyb . $e_bodyc . $e_reply, 80 );
+$msg = wordwrap( $e_bodya . $e_reply . $e_bodyb . $e_bodyc , 80 );
  
 // Creamos el encabezado del correo 
 $headers = "From: ".$name." <".$email.">" . PHP_EOL;
@@ -95,7 +95,7 @@ $headers .= "Content-type: text/plain; charset=utf-8" . PHP_EOL;
 $headers .= "Content-Transfer-Encoding: quoted-printable" . PHP_EOL;
  
  
-if(mail($correo, $e_asunto, $msg, $headers)) {
+if(mail($correo, $e_subject, $msg, $headers)) {
  
 	// Si el correo es enviado correctamente, mostramos un mensaje 
  
